@@ -1,5 +1,8 @@
+import React from 'react'
+
 import { useContext,useState } from "react";
 
+import Container from '@mui/material/Container';
 
 
 const BodyRight = ()=>{
@@ -7,9 +10,11 @@ const BodyRight = ()=>{
 
 
     return(
-        <div className="bodyRight">
-            <h1>body right</h1>
-        </div>
+        <div sx={{
+            border:"2px solid black"
+        }} >
+            advertisement
+        </div>            
     )
 }
 
