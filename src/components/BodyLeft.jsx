@@ -9,6 +9,7 @@ import Avatar from '@mui/material/Avatar';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Box from '@mui/material/Box';
 
+import Chat from "./Chat";
 import { Typography } from '@mui/material';
 
 
@@ -31,66 +32,18 @@ const BodyLeft = () => {
                     margin: "0 0 0 15px",
                 }} />
             </div>
-            <div className="chats">
-                <div className="first">
-                    <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />
-                    <div className="text">
-                        <h5>item title</h5>
-                        <h6>full name</h6>
-                        <p><small>last message  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; time </small></p>
 
-                    </div>
-                </div>
-                <MoreVertIcon />
-            </div>
-            <div className="chats">
-                <div className="first">
-                    <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />
-                    <div className="text">
-                        <h5>item title</h5>
-                        <h6>full name</h6>
-                        <p><small>last message  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; time </small></p>
-
-                    </div>
-                </div>
-                <MoreVertIcon />
-            </div>
-            <div className="chats">
-                <div className="first">
-                    <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />
-                    <div className="text">
-                        <h5>item title</h5>
-                        <h6>full name</h6>
-                        <p><small>last message  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; time </small></p>
-
-                    </div>
-                </div>
-                <MoreVertIcon />
-            </div>
-            <div className="chats">
-                <div className="first">
-                    <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />
-                    <div className="text">
-                        <h5>item title</h5>
-                        <h6>full name</h6>
-                        <p><small>last message  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; time </small></p>
-
-                    </div>
-                </div>
-                <MoreVertIcon />
-            </div>
-            <div className="chats">
-                <div className="first">
-                    <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />
-                    <div className="text">
-                        <h5>item title</h5>
-                        <h6>full name</h6>
-                        <p><small>last message  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; time </small></p>
-
-                    </div>
-                </div>
-                <MoreVertIcon />
-            </div>
+            <Chat/>
+            <Chat/>
+            <Chat/>
+            <Chat/>
+            <Chat/>
+            <Chat/>
+            <Chat/>
+            <Chat/>
+            <Chat/>
+            <Chat/>
+           
         </div>
     )
 }

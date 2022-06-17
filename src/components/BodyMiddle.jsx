@@ -12,6 +12,29 @@ import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import CallIcon from '@mui/icons-material/Call';
+import VideocamIcon from '@mui/icons-material/Videocam';
+import { margin } from '@mui/system';
+import { bottomNavigationActionClasses, ListItem, Paper } from '@mui/material';
+import List from '@mui/material/List';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles({
+    message: {
+        padding: "5px 15px",
+        borderRadius: "15px",
+        margin: "0 5px 0 5px",
+        maxWidth:'280px'
+    },
+    sent: {
+        backgroundColor: "rgb(123, 169, 255) ",
+    },
+    recieved: {
+        backgroundColor: "rgb(224, 224, 224)",
+    }
+})
+
+
 
 
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -21,6 +44,8 @@ const BodyMiddle = () => {
 
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+    const classes = useStyles()
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -42,12 +67,18 @@ const BodyMiddle = () => {
 
     return (
         <Container fluid sx={{
-            border: "2px solid"
+
+            // border: "2px solid"
+
+
         }}>
             <AppBar position="static" sx={{
                 backgroundColor: "transparent",
-                boxShadow: "0"
+                boxShadow: "0",
+                borderBottom: "2px solid rgb(236, 236, 236)",
+
             }}>
+
                 <Container maxWidth="xl">
                     <Toolbar disableGutters sx={{
                         display: "flex",
@@ -93,7 +124,7 @@ const BodyMiddle = () => {
                                 ))}
                             </Menu>
                             <Box variant="h5" ml={1} pt={1}>
-                                <Typography  sx={{
+                                <Typography sx={{
                                     fontWeight: "bolder",
                                     color: "black"
                                 }}>
@@ -101,7 +132,7 @@ const BodyMiddle = () => {
 
                                 </Typography>
                                 <Typography sx={{
-                                    color:"black"
+                                    color: "black"
                                 }}>
                                     Name
                                 </Typography>
@@ -109,13 +140,31 @@ const BodyMiddle = () => {
                         </Box>
 
                         <Box >
+                            <Tooltip title="Audio call">
+                                <IconButton color='primary' sx={{ pr: 0.2 }}>
+                                    <CallIcon fontSize='medium' sx={{
+                                        borderRadius: "50%",
+                                        padding: "7px",
+                                        // color: "primary"
+                                    }} />
+                                </IconButton>
+                            </Tooltip>
+                            <Tooltip title="Video call">
+                                <IconButton color='primary' sx={{ pr: 0.2 }}>
+                                    <VideocamIcon fontSize='medium' sx={{
+                                        borderRadius: "50%",
+                                        padding: "7px",
+                                        // color: "primary"
+                                    }} />
+                                </IconButton>
+                            </Tooltip>
                             <Tooltip title="Open settings">
                                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                                     <MoreHorizIcon sx={{
-                                        background: "rgb(220, 220, 220)",
+                                        background: "#42a5f5",
                                         borderRadius: "50%",
-                                        padding: "7px",
-                                        color: "black"
+                                        padding: "3px",
+                                        color: "white"
                                     }} />
                                 </IconButton>
                             </Tooltip>
@@ -123,6 +172,102 @@ const BodyMiddle = () => {
                     </Toolbar>
                 </Container>
             </AppBar>
+
+
+
+
+            {/* messages */}
+            <Paper sx={{
+                maxHeight: "200",
+                overflow: "auto"
+            }}>
+                <List>
+                    <ListItem >
+                        <Avatar></Avatar>
+                        <p className={classes.message + " " + classes.recieved} >message received</p>
+                    </ListItem>
+                    <ListItem sx={{
+                        justifyContent: "flex-end"
+                    }} >
+                        <p className={classes.message + " " + classes.sent} >message sent</p>
+                        <Avatar></Avatar>
+                    </ListItem>
+                    <ListItem sx={{
+                        justifyContent: "flex-end"
+                    }} >
+                        <p className={classes.message + " " + classes.sent} >message sent</p>
+                        <Avatar></Avatar>
+                    </ListItem>
+                    <ListItem sx={{
+                        justifyContent: "flex-end"
+                    }} >
+                        <p className={classes.message + " " + classes.sent} >message sent</p>
+                        <Avatar></Avatar>
+                    </ListItem>
+                    <ListItem >
+                        <Avatar></Avatar>
+                        <p className={classes.message + " " + classes.recieved} >message received asdhfkjashdfkjhasdkjfhaksjd
+                        asdfhaskdhfkasjdhfkjashdfk kdjhasfkjhasd kfaskjdfh aksdf</p>
+                    </ListItem>
+                    <ListItem >
+                        <Avatar></Avatar>
+                        <p className={classes.message + " " + classes.recieved} >message received</p>
+                    </ListItem>
+                    <ListItem >
+                        <Avatar></Avatar>
+                        <p className={classes.message + " " + classes.recieved} >message received</p>
+                    </ListItem>
+                    <ListItem >
+                        <Avatar></Avatar>
+                        <p className={classes.message + " " + classes.recieved} >message received</p>
+                    </ListItem>
+                    <ListItem sx={{
+                        justifyContent: "flex-end"
+                    }} >
+                        <p className={classes.message + " " + classes.sent} >message sent</p>
+                        <Avatar></Avatar>
+                    </ListItem>
+                    <ListItem sx={{
+                        justifyContent: "flex-end"
+                    }} >
+                        <p className={classes.message + " " + classes.sent} >message sent</p>
+                        <Avatar></Avatar>
+                    </ListItem>
+                    <ListItem sx={{
+                        justifyContent: "flex-end"
+                    }} >
+                        <p className={classes.message + " " + classes.sent} >message sent</p>
+                        <Avatar></Avatar>
+                    </ListItem>
+                    <ListItem sx={{
+                        justifyContent: "flex-end"
+                    }} >
+                        <p className={classes.message + " " + classes.sent} >message sent</p>
+                        <Avatar></Avatar>
+                    </ListItem>
+                    <ListItem sx={{
+                        justifyContent: "flex-end"
+                    }} >
+                        <p className={classes.message + " " + classes.sent} >message sent</p>
+                        <Avatar></Avatar>
+                    </ListItem>
+                    <ListItem sx={{
+                        justifyContent: "flex-end"
+                    }} >
+                        <p className={classes.message + " " + classes.sent} >message sent</p>
+                        <Avatar></Avatar>
+                    </ListItem>
+                    <ListItem sx={{
+                        justifyContent: "flex-end"
+                    }} >
+                        <p className={classes.message + " " + classes.sent} >message sent</p>
+                        <Avatar></Avatar>
+                    </ListItem>
+                </List>
+
+            </Paper>
+
+
         </Container>
 
 
