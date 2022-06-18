@@ -10,7 +10,9 @@ const Chat = () => {
 
     return (
 
-        <div className="chats">
+        <div className="chats" sx={{
+            
+        }} >
             <div className="first">
                 <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />
                 <div className="text">

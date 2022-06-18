@@ -25,7 +25,7 @@ const Body = () => {
 
         //     <BodyRight />
         // </Box>
-        <Grid container xs={12} spacing={2} m={0} sx={{border:"2px solid black"}}>
+        <Grid container xs={12} spacing={2} m={0} >
             <Grid item  sm={12} md={3}>
                 <BodyLeft  />
             </Grid>

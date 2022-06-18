@@ -68,10 +68,12 @@ const Head = () => {
     return (
 
         <Grid container spacing={0} xs={12} mt={3}  >
-            <Grid item xs={12} md={3} p={2} >
+            <Grid item xs={12} md={3} p={2}  >
                 <MenuIcon fontSize='large' /> LOGO
             </Grid>
-            <Grid container xs={12} md={6}  >
+            <Grid container xs={12} md={6} sx={{
+                display:{xs:"none",md:"block"}
+            }}  >
                 <Grid item xs={12} sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}  >
                     <SystemUpdateAltIcon fontSize='large' />
                     <Typography variant='h5' sx={{}} pt={1} ml={1} >Download The App</Typography>
@@ -108,7 +110,9 @@ const Head = () => {
                     </Grid>
                 </Grid>
             </Grid>
-            <Grid container item xs={12} md={3}  >
+            <Grid container item xs={12} md={3} sx={{
+                display:{xs:"none",md:"block"}
+            }}  >
                 <Grid item xs={12} ml={5} >
                     <BasicSelect datas={languages} />
                     <NotificationShow />

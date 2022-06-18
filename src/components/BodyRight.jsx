@@ -12,7 +12,8 @@ const BodyRight = ()=>{
                <Grid container spacing={0} direction="column" sx={{
                 borderLeft:"1px solid rgb(224, 224, 224)",
                 height:"70vh",
-                padding:"20px"
+                padding:"20px",
+                display:{xs:"none",md:"block"}
                }} >
                 <Grid item xs={12}>
                     advertisement

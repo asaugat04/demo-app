@@ -56,7 +56,9 @@ const BodyMiddle = () => {
 
 
     return (
-        <Grid container xs={12} direction='column'>
+        <Grid container xs={12} direction='column' sx={{
+            display:{xs:'none',md:'block'}
+        }} >
             <Grid item xs={12}>
                 <AppBar position="static" sx={{
                     backgroundColor: "transparent",
@@ -218,7 +220,7 @@ const BodyMiddle = () => {
                 </Grid>
                 <Grid item xs={1} pl={2} >
                     <Tooltip title="send">
-                        <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                        <IconButton  sx={{ p: 0 }}>
                             <SendIcon sx={{
                                 background: "#42a5f5",
                                 borderRadius: "50%",
