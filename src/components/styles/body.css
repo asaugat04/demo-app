@@ -1,16 +1,6 @@
-.body{
-    display: flex;
-    justify-content: space-between;
-    /* background-color: rgb(220, 220, 220); */
-}
 
 
-.bodyLeft{
-    border-right: 2px solid rgb(236, 236, 236);
-    display: flex;
-    flex-direction: column;
-    padding: 0 5px;
-}
+
 
 .search{
     display: flex;

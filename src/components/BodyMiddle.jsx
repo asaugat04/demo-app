@@ -15,24 +15,15 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import CallIcon from '@mui/icons-material/Call';
 import VideocamIcon from '@mui/icons-material/Videocam';
 import { margin } from '@mui/system';
-import { bottomNavigationActionClasses, ListItem, Paper } from '@mui/material';
+import { bottomNavigationActionClasses, ListItem, ListItemAvatar, ListItemText, Paper } from '@mui/material';
 import List from '@mui/material/List';
-import { makeStyles } from '@material-ui/core/styles';
+import Divider from '@mui/material/Divider';
 
-const useStyles = makeStyles({
-    message: {
-        padding: "5px 15px",
-        borderRadius: "15px",
-        margin: "0 5px 0 5px",
-        maxWidth:'280px'
-    },
-    sent: {
-        backgroundColor: "rgb(123, 169, 255) ",
-    },
-    recieved: {
-        backgroundColor: "rgb(224, 224, 224)",
-    }
-})
+import Grid from '@mui/material/Grid';
+import MessageReceived from './MessageReceived';
+import MessageSent from './MessageSent';
+import InputBase from '@mui/material/InputBase';
+import SendIcon from '@mui/icons-material/Send';
 
 
 
@@ -45,7 +36,6 @@ const BodyMiddle = () => {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
 
-    const classes = useStyles()
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -66,209 +56,181 @@ const BodyMiddle = () => {
 
 
     return (
-        <Container fluid sx={{
+        <Grid container xs={12} direction='column'>
+            <Grid item xs={12}>
+                <AppBar position="static" sx={{
+                    backgroundColor: "transparent",
+                    boxShadow: "0",
+                    // paddingRight:'5px'
 
-            // border: "2px solid"
+                }}>
 
-
-        }}>
-            <AppBar position="static" sx={{
-                backgroundColor: "transparent",
-                boxShadow: "0",
-                borderBottom: "2px solid rgb(236, 236, 236)",
-
-            }}>
-
-                <Container maxWidth="xl">
-                    <Toolbar disableGutters sx={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "space-between",
-                        minWidth: "200px",
-                    }}>
-
-
-
-
-
-                        <Box sx={{
-                            flexGrow: 0,
-                            display: "flex"
+                    <Container >
+                        <Toolbar disableGutters sx={{
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "space-between",
+                            minWidth: "200px",
                         }}>
-                            <Tooltip title="Open settings">
-                                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                    <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
 
-                                </IconButton>
-                            </Tooltip>
-                            <Menu
-                                sx={{ mt: '45px' }}
-                                id="menu-appbar"
-                                anchorEl={anchorElUser}
-                                anchorOrigin={{
-                                    vertical: 'top',
-                                    horizontal: 'right',
-                                }}
-                                keepMounted
-                                transformOrigin={{
-                                    vertical: 'top',
-                                    horizontal: 'right',
-                                }}
-                                open={Boolean(anchorElUser)}
-                                onClose={handleCloseUserMenu}
-                            >
-                                {settings.map((setting) => (
-                                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                                        <Typography textAlign="center">{setting}</Typography>
-                                    </MenuItem>
-                                ))}
-                            </Menu>
-                            <Box variant="h5" ml={1} pt={1}>
-                                <Typography sx={{
-                                    fontWeight: "bolder",
-                                    color: "black"
-                                }}>
-                                    Item Tittle
 
-                                </Typography>
-                                <Typography sx={{
-                                    color: "black"
-                                }}>
-                                    Name
-                                </Typography>
+
+
+
+                            <Box sx={{
+                                flexGrow: 0,
+                                display: "flex"
+                            }}>
+                                <Tooltip title="Open settings">
+                                    <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                                        <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+
+                                    </IconButton>
+                                </Tooltip>
+                                <Menu
+                                    sx={{ mt: '45px' }}
+                                    id="menu-appbar"
+                                    anchorEl={anchorElUser}
+                                    anchorOrigin={{
+                                        vertical: 'top',
+                                        horizontal: 'right',
+                                    }}
+                                    keepMounted
+                                    transformOrigin={{
+                                        vertical: 'top',
+                                        horizontal: 'right',
+                                    }}
+                                    open={Boolean(anchorElUser)}
+                                    onClose={handleCloseUserMenu}
+                                >
+                                    {settings.map((setting) => (
+                                        <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                                            <Typography textAlign="center">{setting}</Typography>
+                                        </MenuItem>
+                                    ))}
+                                </Menu>
+                                <Box variant="h5" ml={1} pt={1}>
+                                    <Typography sx={{
+                                        fontWeight: "bolder",
+                                        color: "black"
+                                    }}>
+                                        Item Tittle
+
+                                    </Typography>
+                                    <Typography sx={{
+                                        color: "black"
+                                    }}>
+                                        Name
+                                    </Typography>
+                                </Box>
                             </Box>
-                        </Box>
 
-                        <Box >
-                            <Tooltip title="Audio call">
-                                <IconButton color='primary' sx={{ pr: 0.2 }}>
-                                    <CallIcon fontSize='medium' sx={{
-                                        borderRadius: "50%",
-                                        padding: "7px",
-                                        // color: "primary"
-                                    }} />
-                                </IconButton>
-                            </Tooltip>
-                            <Tooltip title="Video call">
-                                <IconButton color='primary' sx={{ pr: 0.2 }}>
-                                    <VideocamIcon fontSize='medium' sx={{
-                                        borderRadius: "50%",
-                                        padding: "7px",
-                                        // color: "primary"
-                                    }} />
-                                </IconButton>
-                            </Tooltip>
-                            <Tooltip title="Open settings">
-                                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                    <MoreHorizIcon sx={{
-                                        background: "#42a5f5",
-                                        borderRadius: "50%",
-                                        padding: "3px",
-                                        color: "white"
-                                    }} />
-                                </IconButton>
-                            </Tooltip>
-                        </Box>
-                    </Toolbar>
-                </Container>
-            </AppBar>
-
-
+                            <Box >
+                                <Tooltip title="Audio call">
+                                    <IconButton color='primary' sx={{ pr: 0.2 }}>
+                                        <CallIcon fontSize='medium' sx={{
+                                            borderRadius: "50%",
+                                            padding: "7px",
+                                            // color: "primary"
+                                        }} />
+                                    </IconButton>
+                                </Tooltip>
+                                <Tooltip title="Video call">
+                                    <IconButton color='primary' sx={{ pr: 0.2 }}>
+                                        <VideocamIcon fontSize='medium' sx={{
+                                            borderRadius: "50%",
+                                            padding: "7px",
+                                            // color: "primary"
+                                        }} />
+                                    </IconButton>
+                                </Tooltip>
+                                <Tooltip title="Open settings">
+                                    <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                                        <MoreHorizIcon sx={{
+                                            background: "#42a5f5",
+                                            borderRadius: "50%",
+                                            padding: "3px",
+                                            color: "white"
+                                        }} />
+                                    </IconButton>
+                                </Tooltip>
+                            </Box>
+                        </Toolbar>
+                    </Container>
+                </AppBar>
+            </Grid>
 
 
+            <Grid item xs={12}>            <Divider /></Grid>
+            {/* **************************************************************************** */}
             {/* messages */}
-            <Paper sx={{
-                maxHeight: "200",
-                overflow: "auto"
-            }}>
-                <List>
-                    <ListItem >
-                        <Avatar></Avatar>
-                        <p className={classes.message + " " + classes.recieved} >message received</p>
-                    </ListItem>
-                    <ListItem sx={{
-                        justifyContent: "flex-end"
-                    }} >
-                        <p className={classes.message + " " + classes.sent} >message sent</p>
-                        <Avatar></Avatar>
-                    </ListItem>
-                    <ListItem sx={{
-                        justifyContent: "flex-end"
-                    }} >
-                        <p className={classes.message + " " + classes.sent} >message sent</p>
-                        <Avatar></Avatar>
-                    </ListItem>
-                    <ListItem sx={{
-                        justifyContent: "flex-end"
-                    }} >
-                        <p className={classes.message + " " + classes.sent} >message sent</p>
-                        <Avatar></Avatar>
-                    </ListItem>
-                    <ListItem >
-                        <Avatar></Avatar>
-                        <p className={classes.message + " " + classes.recieved} >message received asdhfkjashdfkjhasdkjfhaksjd
-                        asdfhaskdhfkasjdhfkjashdfk kdjhasfkjhasd kfaskjdfh aksdf</p>
-                    </ListItem>
-                    <ListItem >
-                        <Avatar></Avatar>
-                        <p className={classes.message + " " + classes.recieved} >message received</p>
-                    </ListItem>
-                    <ListItem >
-                        <Avatar></Avatar>
-                        <p className={classes.message + " " + classes.recieved} >message received</p>
-                    </ListItem>
-                    <ListItem >
-                        <Avatar></Avatar>
-                        <p className={classes.message + " " + classes.recieved} >message received</p>
-                    </ListItem>
-                    <ListItem sx={{
-                        justifyContent: "flex-end"
-                    }} >
-                        <p className={classes.message + " " + classes.sent} >message sent</p>
-                        <Avatar></Avatar>
-                    </ListItem>
-                    <ListItem sx={{
-                        justifyContent: "flex-end"
-                    }} >
-                        <p className={classes.message + " " + classes.sent} >message sent</p>
-                        <Avatar></Avatar>
-                    </ListItem>
-                    <ListItem sx={{
-                        justifyContent: "flex-end"
-                    }} >
-                        <p className={classes.message + " " + classes.sent} >message sent</p>
-                        <Avatar></Avatar>
-                    </ListItem>
-                    <ListItem sx={{
-                        justifyContent: "flex-end"
-                    }} >
-                        <p className={classes.message + " " + classes.sent} >message sent</p>
-                        <Avatar></Avatar>
-                    </ListItem>
-                    <ListItem sx={{
-                        justifyContent: "flex-end"
-                    }} >
-                        <p className={classes.message + " " + classes.sent} >message sent</p>
-                        <Avatar></Avatar>
-                    </ListItem>
-                    <ListItem sx={{
-                        justifyContent: "flex-end"
-                    }} >
-                        <p className={classes.message + " " + classes.sent} >message sent</p>
-                        <Avatar></Avatar>
-                    </ListItem>
-                    <ListItem sx={{
-                        justifyContent: "flex-end"
-                    }} >
-                        <p className={classes.message + " " + classes.sent} >message sent</p>
-                        <Avatar></Avatar>
-                    </ListItem>
-                </List>
+            <Grid item xs={12}>
+                <Box component='div' sx={{
+                    overflowY: "auto",
+                    height: "69vh"
+                }} >
 
-            </Paper>
+                    <List>
+                        <MessageReceived />
+                        <MessageSent />
+                        <MessageSent />
+                        <MessageReceived />
+                        <MessageReceived />
+                        <MessageSent />
+                        <MessageReceived />
+                        <MessageSent />
+                        <MessageSent />
+                        <MessageReceived />
+                        <MessageReceived />
+                        <MessageSent />
+                        <MessageReceived />
+                    </List >
 
 
-        </Container>
+                </Box>
+
+            </Grid>
+
+            <Grid container spacing={0} xs={12} sx={{
+                // border: "2px solid blue",
+                margin: "5px 0",
+                padding: "10px",
+
+            }} >
+                <Grid item xs={1} >
+                    <Tooltip title="options">
+                        <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                            <MoreHorizIcon sx={{
+                                background: "#42a5f5",
+                                borderRadius: "50%",
+                                padding: "6px",
+                                color: "white"
+                            }} />
+                        </IconButton>
+                    </Tooltip>
+                </Grid>
+                <Grid item xs={10} sx={{
+                    backgroundColor: "rgb(224, 224, 224)",
+                    borderRadius:"20px",
+                    padding:"7px 20px 0 20px"
+                }}>
+                    <InputBase fullWidth={true} required={true} type='text' placeholder='enter message' />
+                </Grid>
+                <Grid item xs={1} pl={2} >
+                    <Tooltip title="send">
+                        <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                            <SendIcon sx={{
+                                background: "#42a5f5",
+                                borderRadius: "50%",
+                                padding: "6px",
+                                color: "white"
+                            }} />
+                        </IconButton>
+                    </Tooltip>
+                </Grid>
+            </Grid>
+
+        </Grid>
 
 
     )

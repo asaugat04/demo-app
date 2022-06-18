@@ -2,19 +2,22 @@ import React from 'react'
 
 import { useContext,useState } from "react";
 
-import Container from '@mui/material/Container';
-
+import Grid from '@mui/material/Grid'
 
 const BodyRight = ()=>{
 
 
 
     return(
-        <div sx={{
-            border:"2px solid black"
-        }} >
-            advertisement
-        </div>            
+               <Grid container spacing={0} direction="column" sx={{
+                borderLeft:"1px solid rgb(224, 224, 224)",
+                height:"70vh",
+                padding:"20px"
+               }} >
+                <Grid item xs={12}>
+                    advertisement
+                </Grid>
+               </Grid>
     )
 }
 

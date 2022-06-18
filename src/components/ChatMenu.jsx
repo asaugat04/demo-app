@@ -59,7 +59,6 @@ const ChatMenu = () => {
       boxShadow: "0",
       // borderRight:"1px solid black",
       padding:"0",
-      maxWidth:"400px"
     }}>
       <Container maxWidth="sm">
         <Toolbar disableGutters sx={{
