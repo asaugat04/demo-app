@@ -4,13 +4,15 @@ import Avatar from '@mui/material/Avatar';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 
+import { appContext } from '../appContext'
+
 const Chat = () => {
 
-
+    const {handleChatClick} = useContext(appContext)
 
     return (
 
-        <div className="chats" sx={{
+        <div className="chats" onClick={e=>handleChatClick("clicked")} sx={{
             
         }} >
             <div className="first">

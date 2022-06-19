@@ -20,11 +20,37 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import SettingsIcon from '@mui/icons-material/Settings';
 import LogoutIcon from '@mui/icons-material/Logout';
 
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { makeStyles } from '@material-ui/core/styles';
+
+
+
+const useStyles=makeStyles({
+    hide:{
+      display:"none",
+    },
+    makeTwoRows:{
+        flexDirection:"column",
+        justifyContent:"center"
+    },
+    makeSingleRow:{
+        flexDirection:"row"
+    }
+  })
+  
+  
+
+
 const locations = ['ktm', 'pkh', 'bkt']
 const categories = ['electronics', 'mobiles', 'sports', 'music', 'music', 'music', 'music', 'music', 'music', 'music', 'music', 'music']
 const languages = ['eng', 'nep']
 
 const Head = () => {
+
+    const classes = useStyles()
+    const matches = useMediaQuery('(max-width:810px)');
+    const matches1 = useMediaQuery('(max-width:557px)');
+
 
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl)
@@ -40,8 +66,10 @@ const Head = () => {
     return (
         <Grid container xs={12} p={2} >
             <Grid item xs={12} lg={3}  >
-                <Stack direction='row' spacing={2} mt={5}  >
-                    <Box ml={3}  >
+                <Stack direction='row' alignItems='center' spacing={2} mt={matches ? 0 : 3}  >
+
+                    {/* menu */}
+                    <Box ml={matches ? 0 : 3}  >
                         <MenuIcon onClick={handleMenuClick} fontSize='large' />
                         <Menu
                             id="demo-positioned-menu"
@@ -68,23 +96,24 @@ const Head = () => {
                                 <MenuItem onClick={handleClose} >
                                     <Button variant='solid' color='neutral' startIcon={<ArrowBackIosIcon fontSize='large' />}>Back</Button>
                                 </MenuItem>
+
                                 <MenuItem disableTouchRipple disableFocusRipple sx={{
                                     display: { md: "block", lg: "none" },
                                     backgroundColor:"transparent"
                                 }} >
-                                    <Stack direction='row' justifyContent='space-evenly' >
-                                        <Stack direction='row' alignItems='center' >
+                                <Stack direction={matches1 ? "column" : "row"} justifyContent='space-evenly' >
+                                        <Stack direction='row' alignItems='center' justifyContent='center' >
                                             <LocationOnIcon />
                                             <BasicSelect datas={locations} />
-                                        </Stack>
-                                        <Stack direction='row'>
                                             <BasicSelect datas={categories} />
+                                        </Stack>
+                                        {/* <Stack direction='row'> */}
                                             <Button disableFocusRipple variant='solid' endIcon={<SearchIcon />} sx={{
                                                 backgroundColor: "rgb(230, 238, 255)"
                                             }} >
                                                 <InputBase required placeholder='search...' />
                                             </Button>
-                                        </Stack>
+                                        {/* </Stack> */}
                                     </Stack>
                                 </MenuItem>
                                 <MenuItem onClick={handleClose} >
@@ -101,7 +130,9 @@ const Head = () => {
 
                         </Menu>
                     </Box>
-                    <Box flex={1} pr={5}>
+
+                    {/* logo */}
+                    <Box flex={1} pr={3}>
                         <Typography variant='h5' align='center' sx={{
                             // backgroundColor: 'blue',
                             // width:'500px',
@@ -110,6 +141,11 @@ const Head = () => {
                             Logo
                         </Typography>
                     </Box>
+                    
+                    <Box className={matches? "": classes.hide} >
+                        <NotificationShow/>
+                    </Box>
+
                 </Stack>
             </Grid>
 

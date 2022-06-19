@@ -15,7 +15,7 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import CallIcon from '@mui/icons-material/Call';
 import VideocamIcon from '@mui/icons-material/Videocam';
 import { margin } from '@mui/system';
-import { bottomNavigationActionClasses, ListItem, ListItemAvatar, ListItemText, Paper } from '@mui/material';
+import { bottomNavigationActionClasses, Button, ListItem, ListItemAvatar, ListItemText, Paper, Stack } from '@mui/material';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 
@@ -25,17 +25,45 @@ import MessageSent from './MessageSent';
 import InputBase from '@mui/material/InputBase';
 import SendIcon from '@mui/icons-material/Send';
 
-
-
+import AddIcon from '@mui/icons-material/Add';
+import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
+import GifBoxIcon from '@mui/icons-material/GifBox';
+import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import FileOpenIcon from '@mui/icons-material/FileOpen';
+import { makeStyles } from '@material-ui/core/styles';
 
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 
+const useStyles = makeStyles({
+    icons: {
+        backgroundColor: "skyblue",
+        height: "40px",
+        width: "40px",
+        borderRadius: "50%",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center"
+
+    }
+})
+
 const BodyMiddle = () => {
+
+
+    const [message,setMessage]=useState("")
+
+    const handleOnChange=(e)=>{
+        setMessage(e.currentTarget.value)
+    }
+
+
 
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
 
+    const classes = useStyles()
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -57,7 +85,7 @@ const BodyMiddle = () => {
 
     return (
         <Grid container xs={12} direction='column' sx={{
-            display:{xs:'none',md:'block'}
+            display: { xs: 'none', md: 'block' }
         }} >
             <Grid item xs={12}>
                 <AppBar position="static" sx={{
@@ -199,37 +227,38 @@ const BodyMiddle = () => {
                 padding: "10px",
 
             }} >
-                <Grid item xs={1} >
-                    <Tooltip title="options">
-                        <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                            <MoreHorizIcon sx={{
-                                background: "#42a5f5",
-                                borderRadius: "50%",
-                                padding: "6px",
-                                color: "white"
-                            }} />
-                        </IconButton>
-                    </Tooltip>
-                </Grid>
-                <Grid item xs={10} sx={{
-                    backgroundColor: "rgb(224, 224, 224)",
-                    borderRadius:"20px",
-                    padding:"7px 20px 0 20px"
-                }}>
-                    <InputBase fullWidth={true} required={true} type='text' placeholder='enter message' />
-                </Grid>
-                <Grid item xs={1} pl={2} >
-                    <Tooltip title="send">
-                        <IconButton  sx={{ p: 0 }}>
-                            <SendIcon sx={{
-                                background: "#42a5f5",
-                                borderRadius: "50%",
-                                padding: "6px",
-                                color: "white"
-                            }} />
-                        </IconButton>
-                    </Tooltip>
-                </Grid>
+
+                <Stack direction='row' flex={1} spacing={0} justifyContent='space-between' sx={{ backgroundColor: "" }} >
+                    <Box component='div' >
+                        <Stack direction='row' gap={0.2}>
+                            <Box className={classes.icons} ><AddIcon fontSize='small' /></Box>
+                            <Box className={classes.icons} ><InsertPhotoIcon fontSize='small' /></Box>
+                            <Box className={classes.icons} ><FileOpenIcon fontSize='small' /></Box>
+                            <Box className={classes.icons} ><GifBoxIcon fontSize='small' /></Box>
+                        </Stack>
+                    </Box>
+                    <Box component='div' flex={1} sx={{ backgroundColor: "" }} >
+                        {/* <Button sx={{ backgroundColor: "rgb(224, 224, 224)", borderRadius: "20px" }} disableFocusRipple endIcon={<EmojiEmotionsIcon fontSize='large' />}><InputBase required fullWidth /></Button> */}
+                        <Stack direction='row' alignItems='center'  sx={{
+                            backgroundColor: "rgb(224, 224, 224)", 
+                            borderRadius: "20px",
+                            padding:"0 10px"
+                        }}>
+                            <InputBase value={message} onChange={handleOnChange} required fullWidth sx={{
+
+                                padding: "5px 10px",
+
+                            }} placeholder='message' />
+                            <EmojiEmotionsIcon />
+                        </Stack>
+
+                    </Box>
+
+                    <Box className={classes.icons} >
+                        {message.length > 0 ? <SendIcon/>: <ThumbUpIcon fontSize='small' />}
+                    </Box>
+                </Stack>
+
             </Grid>
 
         </Grid>
