@@ -75,7 +75,8 @@ const StyledListbox = styled('ul')(
   border: 1px solid ${theme.palette.mode === 'dark' ? grey[800] : grey[300]};
   border-radius: 0.75em;
   color: ${theme.palette.mode === 'dark' ? grey[300] : grey[900]};
-  overflow: auto;
+  max-height:150px;
+  overflow-y: auto;
   `,
 );
 

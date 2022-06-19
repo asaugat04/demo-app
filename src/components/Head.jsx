@@ -4,7 +4,7 @@ import { useContext, useState } from "react";
 import Grid from "@mui/material/Grid"
 import MenuIcon from '@mui/icons-material/Menu';
 import SystemUpdateAltIcon from '@mui/icons-material/SystemUpdateAlt';
-import { Badge, Button, Stack, Typography } from '@mui/material';
+import { Badge, Button, Divider, Stack, Typography } from '@mui/material';
 import BasicSelect from "./BasicSelect"
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import InputBase from '@mui/material/InputBase';
@@ -16,11 +16,12 @@ import IconButton from '@mui/material/IconButton';
 import MenuItem from '@mui/material/MenuItem';
 import "./styles/head.css"
 import { Box } from '@mui/system';
-import Cmenu from './Cmenu';
-
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import SettingsIcon from '@mui/icons-material/Settings';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 const locations = ['ktm', 'pkh', 'bkt']
-const categories = ['electronics', 'mobiles', 'sports', 'music']
+const categories = ['electronics', 'mobiles', 'sports', 'music', 'music', 'music', 'music', 'music', 'music', 'music', 'music', 'music']
 const languages = ['eng', 'nep']
 
 const Head = () => {
@@ -28,21 +29,77 @@ const Head = () => {
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl)
     const handleMenuClick = (e) => {
-      setAnchorEl(e.currentTarget)
+        setAnchorEl(e.currentTarget)
     }
-  
-  
+
+
     const handleClose = () => {
-      setAnchorEl(null)
+        setAnchorEl(null)
     }
 
     return (
-        <Grid container xs={12} p={3} >
+        <Grid container xs={12} p={2} >
             <Grid item xs={12} lg={3}  >
-                <Stack direction='row' spacing={2}  >
-                    <Box ml={3} >
+                <Stack direction='row' spacing={2} mt={5}  >
+                    <Box ml={3}  >
                         <MenuIcon onClick={handleMenuClick} fontSize='large' />
-                        <Cmenu open={open} handleClose={handleClose} top={20} left={20} />
+                        <Menu
+                            id="demo-positioned-menu"
+                            aria-labelledby="demo-positioned-button"
+                            anchorEl={open}
+                            open={open}
+                            onClose={handleClose}
+                            anchorReference="anchorPosition"
+                            anchorPosition={{ top: 20, left: 20 }}
+                            anchorOrigin={{
+                                vertical: 'top',
+                                horizontal: 'left',
+                            }}
+                            transformOrigin={{
+                                vertical: 'top',
+                                horizontal: 'left',
+                            }}
+
+
+
+
+                        >
+                            <Stack direction='column' spacing={1}>
+                                <MenuItem onClick={handleClose} >
+                                    <Button variant='solid' color='neutral' startIcon={<ArrowBackIosIcon fontSize='large' />}>Back</Button>
+                                </MenuItem>
+                                <MenuItem disableTouchRipple disableFocusRipple sx={{
+                                    display: { md: "block", lg: "none" },
+                                    backgroundColor:"transparent"
+                                }} >
+                                    <Stack direction='row' justifyContent='space-evenly' >
+                                        <Stack direction='row' alignItems='center' >
+                                            <LocationOnIcon />
+                                            <BasicSelect datas={locations} />
+                                        </Stack>
+                                        <Stack direction='row'>
+                                            <BasicSelect datas={categories} />
+                                            <Button disableFocusRipple variant='solid' endIcon={<SearchIcon />} sx={{
+                                                backgroundColor: "rgb(230, 238, 255)"
+                                            }} >
+                                                <InputBase required placeholder='search...' />
+                                            </Button>
+                                        </Stack>
+                                    </Stack>
+                                </MenuItem>
+                                <MenuItem onClick={handleClose} >
+                                    <Button variant='solid' color='neutral' startIcon={<AccountCircle fontSize='large' />}>Profile</Button>
+                                </MenuItem><MenuItem onClick={handleClose} >
+                                    <Button variant='solid' color='neutral' startIcon={<SettingsIcon fontSize='large' />}>Settings</Button>
+                                </MenuItem>
+                                <Divider/>
+                                <MenuItem onClick={handleClose} >
+                                    <Button variant='solid' color='neutral' startIcon={<LogoutIcon fontSize='large' />}>Logout</Button>
+                                </MenuItem>
+                            </Stack>
+
+
+                        </Menu>
                     </Box>
                     <Box flex={1} pr={5}>
                         <Typography variant='h5' align='center' sx={{
@@ -60,7 +117,7 @@ const Head = () => {
                 display: { xs: "none", lg: "block" },
                 // backgroundColor:"red"
             }}>
-                <Grid item xs={12} sx={{display:'flex'}} justifyContent='center' >
+                <Grid item xs={12} sx={{ display: 'flex' }} justifyContent='center' >
                     <Button variant='solid' startIcon={<SystemUpdateAltIcon />}  >
                         Download The App
                     </Button>
@@ -84,7 +141,7 @@ const Head = () => {
             </Grid>
 
 
-            <Grid item xs={12} lg={3}  sx={{
+            <Grid item xs={12} lg={3} sx={{
                 display: { xs: "none", lg: "block" },
                 // backgroundColor:"red"
             }}>

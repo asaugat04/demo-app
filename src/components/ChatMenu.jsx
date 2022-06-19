@@ -9,7 +9,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import VideoCallIcon from '@mui/icons-material/VideoCall';
 import EditIcon from '@mui/icons-material/Edit';
-import { Stack } from '@mui/material';
+import { Menu, MenuItem, Stack } from '@mui/material';
 import { useState } from 'react';
 import Cmenu from './Cmenu';
 
@@ -37,18 +37,18 @@ const ChatMenu = () => {
   const handleAvatarClick = (e) => {
     setAnchorEl(e.currentTarget)
   }
-  
-  
+
+
   const handleClose = () => {
     setAnchorEl(null)
   }
-  
-  const props={
+
+  const props = {
     open: open,
     handleClose: handleClose,
-    top:110,
-    left:75,
-    menuItems:['Profile','My account','Logout']
+    top: 110,
+    left: 75,
+    menuItems: ['Profile', 'My account', 'Logout']
   }
   return (
     <Stack direction='row' sx={{
@@ -57,8 +57,30 @@ const ChatMenu = () => {
     }} >
       <Stack direction='row' gap={2} alignItems='center'>
         <Avatar onClick={handleAvatarClick} ></Avatar>
-        {/* <Cmenu  open={open} handleClose={handleClose} top={110} left={75}  /> */}
-        <Cmenu  {...props}  />
+        <Menu
+          id="demo-positioned-menu"
+          aria-labelledby="demo-positioned-button"
+          anchorEl={open}
+          open={open}
+          onClose={handleClose}
+          anchorReference="anchorPosition"
+          anchorPosition={{ top: 115, left: 75 }}
+          anchorOrigin={{
+            vertical: 'top',
+            horizontal: 'left',
+          }}
+          transformOrigin={{
+            vertical: 'top',
+            horizontal: 'left',
+          }}
+        >
+          <MenuItem onClick={handleClose} >Profile</MenuItem>
+          <MenuItem onClick={handleClose} >My account</MenuItem>
+          <MenuItem onClick={handleClose} >Logout</MenuItem>
+
+
+
+        </Menu>
         <Typography variant='h5' fontWeight='bolder' pt={1} >
           Chats
         </Typography>

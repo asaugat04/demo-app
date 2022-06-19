@@ -7,7 +7,6 @@ import MenuItem from '@mui/material/MenuItem';
 const Cmenu = (props) => {
 
 
-    console.log(props.menuItems)
 
     return (
         <Menu
