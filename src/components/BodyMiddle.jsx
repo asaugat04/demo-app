@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { useContext, useState } from 'react'
+import { appContext } from '../appContext'
 import Container from '@mui/material/Container';
 import AppBar from '@mui/material/AppBar';
 
@@ -32,6 +33,9 @@ import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import FileOpenIcon from '@mui/icons-material/FileOpen';
 import { makeStyles } from '@material-ui/core/styles';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+
+
 
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
@@ -51,10 +55,12 @@ const useStyles = makeStyles({
 
 const BodyMiddle = () => {
 
+    const { clicked } = useContext(appContext)
 
-    const [message,setMessage]=useState("")
 
-    const handleOnChange=(e)=>{
+    const [message, setMessage] = useState("")
+
+    const handleOnChange = (e) => {
         setMessage(e.currentTarget.value)
     }
 
@@ -85,7 +91,7 @@ const BodyMiddle = () => {
 
     return (
         <Grid container xs={12} direction='column' sx={{
-            display: { xs: 'none', md: 'block' }
+            display: { xs: clicked ? 'block' : 'none', md: 'block' }
         }} >
             <Grid item xs={12}>
                 <AppBar position="static" sx={{
@@ -102,13 +108,14 @@ const BodyMiddle = () => {
                             justifyContent: "space-between",
                             minWidth: "200px",
                         }}>
+                            {/* {clicked ? "<Box>< Button p={0} m={0} ><ArrowBackIosIcon variant='contained' color='red' /></Button></Box>" : ""} */}
 
 
 
 
 
                             <Box sx={{
-                                flexGrow: 0,
+                                flexGrow: 1,
                                 display: "flex"
                             }}>
                                 <Tooltip title="Open settings">
@@ -188,7 +195,7 @@ const BodyMiddle = () => {
                         </Toolbar>
                     </Container>
                 </AppBar>
-            </Grid>
+            </Grid >
 
 
             <Grid item xs={12}>            <Divider /></Grid>
@@ -232,17 +239,17 @@ const BodyMiddle = () => {
                     <Box component='div' >
                         <Stack direction='row' gap={0.2}>
                             <Box className={classes.icons} ><AddIcon fontSize='small' /></Box>
-                            <Box className={classes.icons} ><InsertPhotoIcon fontSize='small' /></Box>
-                            <Box className={classes.icons} ><FileOpenIcon fontSize='small' /></Box>
-                            <Box className={classes.icons} ><GifBoxIcon fontSize='small' /></Box>
+                            <Box className={classes.icons} sx={{display:{xs:"none",sm:"block"}}} ><InsertPhotoIcon fontSize='small' /></Box>
+                            <Box className={classes.icons} sx={{display:{xs:"none",sm:"block"}}}><FileOpenIcon fontSize='small' /></Box>
+                            <Box className={classes.icons} sx={{display:{xs:"none",sm:"block"}}}><GifBoxIcon fontSize='small' /></Box>
                         </Stack>
                     </Box>
                     <Box component='div' flex={1} sx={{ backgroundColor: "" }} >
                         {/* <Button sx={{ backgroundColor: "rgb(224, 224, 224)", borderRadius: "20px" }} disableFocusRipple endIcon={<EmojiEmotionsIcon fontSize='large' />}><InputBase required fullWidth /></Button> */}
-                        <Stack direction='row' alignItems='center'  sx={{
-                            backgroundColor: "rgb(224, 224, 224)", 
+                        <Stack direction='row' alignItems='center' sx={{
+                            backgroundColor: "rgb(224, 224, 224)",
                             borderRadius: "20px",
-                            padding:"0 10px"
+                            padding: "0 10px"
                         }}>
                             <InputBase value={message} onChange={handleOnChange} required fullWidth sx={{
 
@@ -255,13 +262,13 @@ const BodyMiddle = () => {
                     </Box>
 
                     <Box className={classes.icons} >
-                        {message.length > 0 ? <SendIcon/>: <ThumbUpIcon fontSize='small' />}
+                        {message.length > 0 ? <SendIcon /> : <ThumbUpIcon fontSize='small' />}
                     </Box>
                 </Stack>
 
             </Grid>
 
-        </Grid>
+        </Grid >
 
 
     )

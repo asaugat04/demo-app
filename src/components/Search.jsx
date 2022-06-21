@@ -11,7 +11,7 @@ const Search = () => {
             <SearchIcon sx={{
                 color: "gray",
             }} />
-            <InputBase placeholder='search messenger' sx={{
+            <InputBase fullWidth placeholder='search messenger' sx={{
                 margin: "0 0 0 15px",
             }} />
         </div>

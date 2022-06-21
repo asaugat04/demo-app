@@ -1,7 +1,6 @@
 import React from 'react'
 
 import Search from './Search';
-import { useContext, useState } from "react";
 import ChatMenu from "./ChatMenu";
 
 import Avatar from '@mui/material/Avatar';
@@ -12,6 +11,7 @@ import Chat from "./Chat";
 import { Typography } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import { appContext } from '../appContext'
+import { useContext, useState } from "react";
 
 // import Divider from '@mui/material/Divider';
 import { makeStyles } from '@material-ui/core/styles';
@@ -20,7 +20,8 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
     hide: {
-        display:"none"
+        backgroundColor:'red',
+        display:'none',
 
     }
 })
@@ -36,10 +37,10 @@ const BodyLeft = () => {
 
 
     return (
-       
-        <Grid className={clicked ? classes.hide:""} container xs={12} m={0} p={0} direction="column" sx={{
+        // className={clicked ? classes.hide:""}
+        <Grid  container xs={12} m={0} p={0} direction="column" sx={{
             borderRight: "1px solid rgb(224, 224, 224)",
-        
+            display: clicked ? 'none': ""
         }} >
             <Grid item xs={12} pl={0} >
                 <ChatMenu />
